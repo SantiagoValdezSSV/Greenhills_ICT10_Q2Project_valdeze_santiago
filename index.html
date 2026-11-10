@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creator Profile</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #e0e0e0;
+    }
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .navbar a {
+      padding: 10px 14px;
+      border-radius: 10px;
+      color: #c4c4e0;
+      font-size: 13px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .navbar a:hover {
+      background: rgba(124, 92, 252, 0.2);
+      color: #ffffff;
+    }
+
+    .navbar a.active {
+      background: linear-gradient(135deg, #7c5cfc, #a855f7);
+      color: #ffffff;
+    }
+
+    .navbar a:focus-visible {
+      outline: 2px solid #c4b5fd;
+      outline-offset: 3px;
+    }
+
+  
+    main {
+      flex: 1;
+      display: grid;
+      place-items: center;
+      padding: 32px 16px;
+    }
+
+    .container {
+      width: 640px;
+      max-width: 100%;
+      padding: 36px;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .label {
+      font-size: 12px;
+      color: #b3b3ce;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 22px;
+      color: #ffffff;
+    }
+
+    .avatar {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 100px;
+      height: 100px;
+      margin: 20px auto 16px;
+      border: 2px solid #7c5cfc;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      overflow: hidden;
+      font-size: 40px;
+    }
+
+    .avatar img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    h2 {
+      font-size: 18px;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .header > p:last-child {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #b3b3ce;
+    }
+
+   
+    .info {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px dashed rgba(255, 255, 255, 0.16);
+      border-radius: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    .card h3 {
+      font-size: 15px;
+      color: #c4b5fd;
+      margin-bottom: 10px;
+    }
+
+    .card p,
+    .card li {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #c4c4e0;
+    }
+
+    .card ul {
+      padding-left: 18px;
+    }
+
+  
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar" aria-label="Main navigation">
+    <a href="index.html" class="active" aria-current="page">
+      Meet the creator
+    </a>
+
+    <a href="periodictable.html">
+      Element Checker
+    </a>
+
+    <a href="clubmeberchecker.html">
+      Verification System
+    </a>
+
+    <a href="club.html">
+      Club Member Management
+    </a>
+  </nav>
+
+  <main>
+    <div class="container">
+
+      <header class="header">
+        <p class="label">Creator Profile</p>
+        <h1>This is me!</h1>
+
+        <div class="avatar">
+          <span aria-hidden="true">👤</span>
+          <img
+            src="unnamed.webp"
+            alt="Profile photo"
+            onerror="this.style.display='none'"
+          >
+        </div>
+
+        <h2>Santiago Valdez</h2>
+        <p>10 - topaz</p>
+      </header>
+
+      <div class="info">
+
+        <section class="card">
+          <h3>My Interests</h3>
+          <ul>
+            <li>being rich</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h3>My Hobbies</h3>
+          <ul>
+            <li>Volleyball, chess, games, and reading</li>
+          </ul>
+        </section>
+
+        <section class="card">
+          <h3>My Dreams</h3>
+          <p>Money</p>
+        </section>
+
+        <section class="card">
+          <h3>Favorite Quote</h3>
+          <p>"you are never more than just a person"</p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

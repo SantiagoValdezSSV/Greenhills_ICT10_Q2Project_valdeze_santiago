@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2026.7.3/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2026.7.3/core.js"></script>
+    <title>Periodic Table Information Finder</title>
+    <style>
+      * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+   body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;      
+      justify-content: flex-start; 
+      padding: 0 20px 40px;
+      overflow-x: hidden;
+      color: #e0e0e0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #1a1a2e);
+      background-size: 400% 400%;
+      animation: bgShift 15s ease infinite;
+    }
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .navbar a {
+      padding: 10px 14px;
+      border-radius: 10px;
+      color: #c4c4e0;
+      font-size: 13px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .navbar a:hover {
+      background: rgba(124, 92, 252, 0.2);
+      color: #ffffff;
+    }
+
+    .navbar a.active {
+      background: linear-gradient(135deg, #7c5cfc, #a855f7);
+      color: #ffffff;
+    }
+
+    .navbar a:focus-visible {
+      outline: 2px solid #c4b5fd;
+      outline-offset: 3px;
+    }
+
+
+        /* ── Main Card ── */
+        .container {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 40px 36px;
+            width: 420px;
+            max-width: 92vw;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        /* ── Header ── */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header .icon {
+            font-size: 48px;
+            margin-bottom: 8px;
+        }
+
+        .header h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .header p {
+            font-size: 13px;
+            color: #9e9eb8;
+            margin-top: 6px;
+        }
+
+        /* ── Form ── */
+        .search-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+     
+
+        .search-form input[type="text"]::placeholder {
+            color: #7a7a9e;
+            text-transform: none;
+        }
+
+        .search-form input[type="text"]:focus {
+            border-color: #7c5cfc;
+            box-shadow: 0 0 0 3px rgba(124, 92, 252, 0.25);
+        }
+
+        .search-form input[type="button"] {
+            padding: 12px 22px;
+            font-size: 15px;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #7c5cfc, #a855f7);
+            color: #ffffff;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.3s;
+        }
+
+        .search-form input[type="button"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(124, 92, 252, 0.45);
+        }
+
+        .search-form input[type="button"]:active {
+            transform: translateY(0);
+        }
+
+        /* ── Result Box ── */
+        .result-box {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px dashed rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            padding: 20px;
+            min-height: 60px;
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #c4c4e0;
+            transition: all 0.3s;
+        }
+
+        .result-box:empty::before {
+            content: "Results will appear here...";
+            color: #5a5a7a;
+            font-style: italic;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 11px;
+            color: #5a5a7a;
+        }
+           .navbar a {
+        padding: 9px 10px;
+        font-size: 12px;
+      }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar" aria-label="Main navigation">
+    <a href="index.html" class="active" aria-current="page">
+      Meet the creator
+    </a>
+
+    <a href="periodictable.html">
+      Element Checker
+    </a>
+
+    <a href="clubmeberchecker.html">
+      Verification System
+    </a>
+
+    <a href="club.html">
+      Club Member Management
+    </a>
+  </nav>
+
+
+    <div class="container">
+
+        <!-- Header -->
+        <div class="header">
+            <div class="icon">⚛️</div>
+            <h1>Non-Metal Element Finder</h1>
+            <p>Search by chemical symbol</p>
+        </div>
+
+        <!-- Search Form -->
+        <form class="search-form" onsubmit="return false;">
+            <input type="text"
+                   id="symbol_input"
+                   placeholder="e.g. H, O, Rn"
+                   maxlength="2"
+                   autocomplete="off">
+            <input type="button"
+                   py-click="search_element"
+                   value="Search">
+        </form>
+
+        <!-- Result Area -->
+        <div class="result-box" id="result"></div>
+
+        <!-- Footer -->
+        <div class="footer">17 non-metals available</div>
+
+    </div>
+    <py-script src="2main.py"></py-script>
+
+</body>
+</html>
